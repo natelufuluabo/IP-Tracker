@@ -1,0 +1,102 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+    height: 100%;
+}
+
+.mainContainer {
+    position: relative;
+    height: 100%;
+}
+
+.absoluteContainer {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4.3rem;
+    padding-top: 2rem;
+    width: 100%;
+    height: 100%;
+}
+
+.absoluteContainer > h1 {
+    font-size: 4rem;
+    color: #fff;
+    margin: 0;
+}
+
+.ipInputCotainer {
+    overflow: hidden;
+    border-radius: 1.5rem;
+    width: 40%;
+    display: grid;
+    grid-template-columns: 12fr 1.2fr;
+}
+
+.ipInput {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    color: #222;
+    font-size: 1.6rem;
+}
+
+.ipInput::placeholder {
+    color: #999;
+    font-size: 1.6rem;
+}
+
+.ipInputCotainer > button {
+    border: .1rem solid #222;
+    color: #fff;
+    background-color: #222;
+    cursor: pointer;
+}
+
+.infosContainer {
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4.5rem;
+    width: 60%;
+    border-radius: 2rem;
+    box-shadow: .1rem 3.1rem 2.4rem -1rem rgba(0,0,0,0.42);
+    -webkit-box-shadow: .1rem 3.1rem 2.4rem -1rem rgba(0,0,0,0.42);
+    -moz-box-shadow: .1rem 3.1rem 2.4rem -1rem rgba(0,0,0,0.42);
+}
+
+.infosContainer > button {
+    border: none;
+    background-color: #fff;
+    color: #999;
+    font-size: 3rem;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.info {
+    margin: 0;
+    font-size: 2rem;
+    color: #222;
+}
