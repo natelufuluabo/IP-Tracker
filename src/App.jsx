@@ -11,7 +11,7 @@ function App() {
       <div className="absoluteContainer">
         <h1>IP Address Tracker</h1>
         <div className="ipInputCotainer">
-          <input type='text' className='ipInput' placeholder='Search for any IP address ou domain' />
+          <input type='text' className='ipInput' placeholder='Search for IP address ou domain' />
           <button><i className="fa-solid fa-chevron-right"></i></button>
         </div>
         <div className='infosContainer'>

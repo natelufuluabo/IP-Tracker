@@ -10,11 +10,13 @@ body, html {
 
 #root {
     height: 100%;
+    width: 100%;
 }
 
 .mainContainer {
     position: relative;
     height: 100%;
+    width: 100%;
 }
 
 .absoluteContainer {
@@ -99,4 +101,39 @@ body, html {
     margin: 0;
     font-size: 2rem;
     color: #222;
+}
+
+@media (max-width: 1000px) {
+    .absoluteContainer {
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .absoluteContainer > h1 {
+        font-size: 2.7rem;
+    }
+
+    .ipInputCotainer {
+        width: 90%;
+        display: grid;
+        grid-template-columns: 5.5fr 1fr;
+    }
+
+    .ipInput, .ipInput::placeholder {
+        font-size: 1.4rem;
+    }
+
+    .infosContainer > button {
+        display: none;
+    }
+
+    .infosContainer {
+        flex-direction: column;
+        gap: 2rem;
+        width: 90%;
+    }
+
+    .infoContainer {
+        gap: .75rem;
+    }
 }
