@@ -1,21 +1,10 @@
-body, html {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-size: 62.5%;
-    height: 100%;
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#root {
-    height: 100%;
-    width: 100%;
-}
-
 .mainContainer {
     position: relative;
     height: 100%;
+    width: 100%;
+}
+
+.bgImage > img {
     width: 100%;
 }
 
@@ -43,6 +32,9 @@ body, html {
     width: 40%;
     display: grid;
     grid-template-columns: 12fr 1.2fr;
+    box-shadow: .1rem 3.1rem 2.4rem -1rem rgba(0,0,0,0.42);
+    -webkit-box-shadow: .1rem 3.1rem 2.4rem -1rem rgba(0,0,0,0.42);
+    -moz-box-shadow: .1rem 3.1rem 2.4rem -1rem rgba(0,0,0,0.42);
 }
 
 .ipInput {
@@ -51,6 +43,7 @@ body, html {
     align-items: center;
     color: #222;
     font-size: 1.6rem;
+    border: none;
 }
 
 .ipInput::placeholder {
@@ -103,13 +96,16 @@ body, html {
     color: #222;
 }
 
-@media (max-width: 1000px) {
-    #root {
+@media (max-width: 425px) {
+    .mainContainer {
+        position: relative;
         height: 100%;
         width: 100%;
     }
-    
+
     .absoluteContainer {
+        position: absolute;
+        top: 0;
         text-align: center;
         gap: 2.5rem;
         width: 100%;
@@ -137,7 +133,7 @@ body, html {
     .infosContainer {
         flex-direction: column;
         gap: 2rem;
-        width: 90%;
+        width: 70%;
     }
 
     .infoContainer {
