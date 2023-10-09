@@ -1,29 +1,21 @@
 import { atom } from "recoil";
 
-export const ipAddressAtom = atom({
-    key: 'ipAddressAtom',
-    default: ''
-});
-
-export const locationAtom = atom({
-    key: 'locationAtom',
-    default: ''
-});
-
-export const timezoneAtom = atom({
-    key: 'timezoneAtom',
-    default: ''
-});
-
-export const ispAtom = atom({
-    key: 'ispAtom',
-    default: ''
-});
-
-export const positionAtom = atom({
-    key: 'positionAtom',
+export const dataAtom = atom({
+    key: 'dataAtom',
     default: {
-        lat: '',
-        long: ''
+        "ip": "",
+        "location": {
+            "country": "",
+            "region": "",
+            "city": "",
+            "lat": Number(''),
+            "lng": Number(''),
+            "postalCode": "",
+            "timezone": "",
+            "geonameId": Number('')
+        },
+    "domains": [],
+    "as": {},
+    "isp": ""
     }
-});
+})

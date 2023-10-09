@@ -11,37 +11,40 @@ export const detectScreenSize = (setScreenWidth) => {
 }
 
 export const getUserLocation = () => {
-    let latitude;
-    let longitude;
-    if ('geolocation' in navigator) {
-            // Get the user's current location
-        navigator.geolocation.getCurrentPosition(function(position) {
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
-        }, function(error) {
+    return new Promise((resolve, reject) => {
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            resolve({ latitude, longitude });
+          },
+          function (error) {
             // Handle any errors that occur while getting the location
             switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    console.error('User denied the request for Geolocation.');
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    console.error('Location information is unavailable.');
-                    break;
-                case error.TIMEOUT:
-                    console.error('The request to get user location timed out.');
-                    break;
-                case error.UNKNOWN_ERROR:
-                    console.error('An unknown error occurred while getting the location.');
-                    break;
-                default:
-                console.error('An error occurred while getting the location:', error);
+              case error.PERMISSION_DENIED:
+                reject('User denied the request for Geolocation.');
+                break;
+              case error.POSITION_UNAVAILABLE:
+                reject('Location information is unavailable.');
+                break;
+              case error.TIMEOUT:
+                reject('The request to get user location timed out.');
+                break;
+              case error.UNKNOWN_ERROR:
+                reject('An unknown error occurred while getting the location.');
+                break;
+              default:
+                reject('An error occurred while getting the location: ' + error.message);
             }
-        });
-        return { latitude, longitude }
-    } else {
-        console.error('Geolocation is not supported in this browser.');
-    }
-}
+          }
+        );
+      } else {
+        reject('Geolocation is not supported in this browser.');
+      }
+    });
+  };
+  
 
 export const getData = async () => {
     const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
