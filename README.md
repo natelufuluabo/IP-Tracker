@@ -1,8 +1,17 @@
-# React + Vite
+# IP Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Introduction
 
-Currently, two official plugins are available:
+This project was found on frontendmentor.io which is a website I use to find good challenging project to complete to sharpen my skills as a software developper.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Goal
+
+The goal of the prject was to build an ip tracker web app and get familiar with geolocalisation technologies.
+
+![My Image](src/images/mobile-design.jpg)
+
+# How it works 
+
+Users enter a domain or a valid ip address and get the IP Address, Location, Timezone and ISP of the input and get to see the location on the map.
+
+![My Image](src/images/result-pic.png)
