@@ -1,6 +1,6 @@
 import '../styles.css';
 import { useState } from 'react';
-import { getDataWithDomain, getDataWithIP } from '../utils/utils';
+import { getDataWithDomain, getDataWithIP, ValidateIPaddress } from '../utils/utils';
 import { dataAtom } from '../utils/recoilStore';
 import { useRecoilState } from 'recoil';
 
@@ -10,9 +10,14 @@ export default function AbsoluteContainer() {
     const location = `${data.location.city}, ${data.location.region}`;
     const handleChange = (e) => {
         setUserInput(e.target.value);
-        console.log(userInput);
     }
     const handleSubmit = async () => {
+        if (ValidateIPaddress(userInput)) {
+            const response = await getDataWithIP(userInput);
+            setData(response);
+            setUserInput('');
+            return 
+        }
         const response = await getDataWithDomain(userInput);
         setData(response);
         setUserInput('');
