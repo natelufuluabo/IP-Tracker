@@ -11,13 +11,13 @@ export const detectScreenSize = (setScreenWidth) => {
 }
 
 export const getUserLocation = () => {
+    let latitude;
+    let longitude;
     if ('geolocation' in navigator) {
             // Get the user's current location
-            navigator.geolocation.getCurrentPosition(function(position) {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-  
-            return { latitude, longitude }
+        navigator.geolocation.getCurrentPosition(function(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
         }, function(error) {
             // Handle any errors that occur while getting the location
             switch (error.code) {
@@ -37,7 +37,16 @@ export const getUserLocation = () => {
                 console.error('An error occurred while getting the location:', error);
             }
         });
+        return { latitude, longitude }
     } else {
         console.error('Geolocation is not supported in this browser.');
     }
+}
+
+export const getData = async () => {
+    // const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_KEY}&domain=google.com`;
+    const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_aJOLOPV3tYSzhl0hAdb0Dl1ZrUfs7&domain=google.com`;
+    const response = await fetch(url);
+    const data = await response.json()
+    return data;
 }
