@@ -44,9 +44,20 @@ export const getUserLocation = () => {
 }
 
 export const getData = async () => {
-    // const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_KEY}&domain=google.com`;
-    const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_aJOLOPV3tYSzhl0hAdb0Dl1ZrUfs7&domain=google.com`;
-    const response = await fetch(url);
-    const data = await response.json()
-    return data;
-}
+    const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
+    try {
+      const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&domain=google.com`;
+      const response = await fetch(url);
+  
+      if (!response.ok) {
+        throw new Error(`Request failed with status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error; // Re-throw the error to handle it at a higher level
+    }
+  };
+  
