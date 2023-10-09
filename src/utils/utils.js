@@ -17,9 +17,6 @@ export const getUserLocation = () => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
   
-            // Now you have the user's latitude and longitude coordinates
-            console.log('Latitude:', latitude);
-            console.log('Longitude:', longitude);
             return { latitude, longitude }
         }, function(error) {
             // Handle any errors that occur while getting the location
