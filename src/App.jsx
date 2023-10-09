@@ -1,7 +1,7 @@
 import './styles.css';
 import { useState, useEffect } from 'react';
 import AbsoluteContainer from './components/AbsoluteContainer';
-import MapContainer from './components/MapContainer';
+import InteractiveMapContainer from './components/MapContainer';
 import desktopBg from './images/pattern-bg-desktop.png';
 import mobileBg from './images/pattern-bg-mobile.png';
 
@@ -24,7 +24,7 @@ function App() {
       <div className="bgImage">
         <img src={imgSrc} />
       </div>
-      <MapContainer />
+      <InteractiveMapContainer />
       <AbsoluteContainer />
     </div>
   )
