@@ -1,19 +1,27 @@
 import '../styles.css';
+import { useState } from 'react';
 import { getDataWithDomain, getDataWithIP } from '../utils/utils';
 import { dataAtom } from '../utils/recoilStore';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 export default function AbsoluteContainer() {
-    const data = useRecoilValue(dataAtom);
-    const location = `${data.location.city}, ${data.location.region}`
-    const handleSubmit = () => {
-        getDataWithDomain();
+    const [userInput, setUserInput] = useState('');
+    const [data, setData] = useRecoilState(dataAtom);
+    const location = `${data.location.city}, ${data.location.region}`;
+    const handleChange = (e) => {
+        setUserInput(e.target.value);
+        console.log(userInput);
+    }
+    const handleSubmit = async () => {
+        const response = await getDataWithDomain(userInput);
+        setData(response);
+        setUserInput('');
     }
     return (
         <div className="absoluteContainer">
             <h1>IP Address Tracker</h1>
             <div className="ipInputCotainer">
-                <input type='text' className='ipInput' placeholder='Search for IP address ou domain' />
+                <input value={userInput} onChange={handleChange} type='text' className='ipInput' placeholder='Search for IP address ou domain' />
                 <button onClick={handleSubmit}><i className="fa-solid fa-chevron-right"></i></button>
             </div>
             <div className='infosContainer'>
