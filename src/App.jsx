@@ -3,7 +3,7 @@ import './styles.css';
 import { useState, useEffect } from 'react';
 import AbsoluteContainer from './components/AbsoluteContainer';
 import InteractiveMapContainer from './components/MapContainer';
-import { detectScreenSize, getUserLocation, getData } from './utils/utils';
+import { detectScreenSize, getUserLocation, getDataWithDomain } from './utils/utils';
 import { dataAtom } from './utils/recoilStore';
 import { useRecoilState } from 'recoil';
 import desktopBg from './images/pattern-bg-desktop.png';
@@ -16,7 +16,7 @@ function App() {
     detectScreenSize(setScreenWidth);
     getUserLocation();
     async function fetchData() {
-      const data = await getData();
+      const data = await getDataWithDomain();
       setData(data);
     }
     fetchData()

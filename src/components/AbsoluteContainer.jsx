@@ -1,5 +1,5 @@
 import '../styles.css';
-import { getData } from '../utils/utils';
+import { getDataWithDomain, getDataWithIP } from '../utils/utils';
 import { dataAtom } from '../utils/recoilStore';
 import { useRecoilValue } from 'recoil';
 
@@ -7,7 +7,7 @@ export default function AbsoluteContainer() {
     const data = useRecoilValue(dataAtom);
     const location = `${data.location.city}, ${data.location.region}`
     const handleSubmit = () => {
-        getData();
+        getDataWithDomain();
     }
     return (
         <div className="absoluteContainer">

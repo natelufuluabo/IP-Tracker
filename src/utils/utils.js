@@ -43,24 +43,41 @@ export const getUserLocation = () => {
         reject('Geolocation is not supported in this browser.');
       }
     });
-  };
+};
   
+export const getDataWithIP = async (ipAddress) => {
+  const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
+  try {
+    const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ipAddress}`;
+    const response = await fetch(url);
 
-export const getData = async () => {
-    const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
-    try {
-      const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&domain=google.com`;
-      const response = await fetch(url);
-  
-      if (!response.ok) {
-        throw new Error(`Request failed with status: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      throw error; // Re-throw the error to handle it at a higher level
+    if (!response.ok) {
+      throw new Error(`Request failed with status: ${response.status}`);
     }
-  };
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error; // Re-throw the error to handle it at a higher level
+  }
+};
+
+export const getDataWithDomain = async (domain = 'google.com') => {
+  const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
+  try {
+    const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&domain=${domain}`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Request failed with status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error; // Re-throw the error to handle it at a higher level
+  }
+};
   
