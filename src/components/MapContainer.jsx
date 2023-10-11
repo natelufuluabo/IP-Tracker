@@ -28,7 +28,7 @@ export default function InteractiveMapContainer() {
 
   const customIcon = new Icon({
     iconUrl: icons,
-    size: [38, 38]
+    size: [15, 15]
   })
 
   const flyToCoordinates = (coordinates) => {
