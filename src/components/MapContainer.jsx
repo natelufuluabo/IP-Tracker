@@ -1,5 +1,7 @@
 import '../styles.css';
 import 'leaflet/dist/leaflet.css';
+import icons from '../images/pin.png';
+import { Icon } from 'leaflet'
 import { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import { getUserLocation } from '../utils/utils'
@@ -24,6 +26,11 @@ export default function InteractiveMapContainer() {
     })
   }, [data.location.lat, data.location.lng]);
 
+  const customIcon = new Icon({
+    iconUrl: icons,
+    size: [38, 38]
+  })
+
   const flyToCoordinates = (coordinates) => {
     if (mapRef.current) {
       mapRef.current.flyTo(coordinates, 13, { duration: 1 }); 
@@ -36,7 +43,7 @@ export default function InteractiveMapContainer() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
-        <Marker position={position}></Marker>
+        <Marker position={position} icon={customIcon}></Marker>
       </MapContainer>
     </>
   )
