@@ -18,6 +18,6 @@ Users enter a domain or a valid ip address and get the IP Address, Location, Tim
 
 # Usage
 
-You can pull the docker image from the docker hub with the command: docker pull aircongo/iptracker:1.0
+You can pull the docker image from the docker hub with the command: docker pull aircongo/iptracker:2.0
 
 You will still an api key from https://geo.ipify.org
